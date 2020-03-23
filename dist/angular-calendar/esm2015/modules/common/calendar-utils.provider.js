@@ -1,0 +1,27 @@
+import * as tslib_1 from "tslib";
+import { Injectable } from '@angular/core';
+import { getMonthView, getWeekViewHeader, getWeekView } from 'calendar-utils';
+import { DateAdapter } from '../../date-adapters/date-adapter';
+let CalendarUtils = class CalendarUtils {
+    constructor(dateAdapter) {
+        this.dateAdapter = dateAdapter;
+    }
+    getMonthView(args) {
+        return getMonthView(this.dateAdapter, args);
+    }
+    getWeekViewHeader(args) {
+        return getWeekViewHeader(this.dateAdapter, args);
+    }
+    getWeekView(args) {
+        return getWeekView(this.dateAdapter, args);
+    }
+};
+CalendarUtils.ctorParameters = () => [
+    { type: DateAdapter }
+];
+CalendarUtils = tslib_1.__decorate([
+    Injectable(),
+    tslib_1.__metadata("design:paramtypes", [DateAdapter])
+], CalendarUtils);
+export { CalendarUtils };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2FsZW5kYXItdXRpbHMucHJvdmlkZXIuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9hbmd1bGFyLWNhbGVuZGFyLyIsInNvdXJjZXMiOlsibW9kdWxlcy9jb21tb24vY2FsZW5kYXItdXRpbHMucHJvdmlkZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDM0MsT0FBTyxFQU9MLFlBQVksRUFDWixpQkFBaUIsRUFDakIsV0FBVyxFQUNaLE1BQU0sZ0JBQWdCLENBQUM7QUFDeEIsT0FBTyxFQUFFLFdBQVcsRUFBRSxNQUFNLGtDQUFrQyxDQUFDO0FBRy9ELElBQWEsYUFBYSxHQUExQixNQUFhLGFBQWE7SUFDeEIsWUFBc0IsV0FBd0I7UUFBeEIsZ0JBQVcsR0FBWCxXQUFXLENBQWE7SUFBRyxDQUFDO0lBRWxELFlBQVksQ0FBQyxJQUFzQjtRQUNqQyxPQUFPLFlBQVksQ0FBQyxJQUFJLENBQUMsV0FBVyxFQUFFLElBQUksQ0FBQyxDQUFDO0lBQzlDLENBQUM7SUFFRCxpQkFBaUIsQ0FBQyxJQUEyQjtRQUMzQyxPQUFPLGlCQUFpQixDQUFDLElBQUksQ0FBQyxXQUFXLEVBQUUsSUFBSSxDQUFDLENBQUM7SUFDbkQsQ0FBQztJQUVELFdBQVcsQ0FBQyxJQUFxQjtRQUMvQixPQUFPLFdBQVcsQ0FBQyxJQUFJLENBQUMsV0FBVyxFQUFFLElBQUksQ0FBQyxDQUFDO0lBQzdDLENBQUM7Q0FDRixDQUFBOztZQWJvQyxXQUFXOztBQURuQyxhQUFhO0lBRHpCLFVBQVUsRUFBRTs2Q0FFd0IsV0FBVztHQURuQyxhQUFhLENBY3pCO1NBZFksYUFBYSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEluamVjdGFibGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcclxuaW1wb3J0IHtcclxuICBHZXRNb250aFZpZXdBcmdzLFxyXG4gIE1vbnRoVmlldyxcclxuICBHZXRXZWVrVmlld0hlYWRlckFyZ3MsXHJcbiAgV2Vla0RheSxcclxuICBHZXRXZWVrVmlld0FyZ3MsXHJcbiAgV2Vla1ZpZXcsXHJcbiAgZ2V0TW9udGhWaWV3LFxyXG4gIGdldFdlZWtWaWV3SGVhZGVyLFxyXG4gIGdldFdlZWtWaWV3XHJcbn0gZnJvbSAnY2FsZW5kYXItdXRpbHMnO1xyXG5pbXBvcnQgeyBEYXRlQWRhcHRlciB9IGZyb20gJy4uLy4uL2RhdGUtYWRhcHRlcnMvZGF0ZS1hZGFwdGVyJztcclxuXHJcbkBJbmplY3RhYmxlKClcclxuZXhwb3J0IGNsYXNzIENhbGVuZGFyVXRpbHMge1xyXG4gIGNvbnN0cnVjdG9yKHByb3RlY3RlZCBkYXRlQWRhcHRlcjogRGF0ZUFkYXB0ZXIpIHt9XHJcblxyXG4gIGdldE1vbnRoVmlldyhhcmdzOiBHZXRNb250aFZpZXdBcmdzKTogTW9udGhWaWV3IHtcclxuICAgIHJldHVybiBnZXRNb250aFZpZXcodGhpcy5kYXRlQWRhcHRlciwgYXJncyk7XHJcbiAgfVxyXG5cclxuICBnZXRXZWVrVmlld0hlYWRlcihhcmdzOiBHZXRXZWVrVmlld0hlYWRlckFyZ3MpOiBXZWVrRGF5W10ge1xyXG4gICAgcmV0dXJuIGdldFdlZWtWaWV3SGVhZGVyKHRoaXMuZGF0ZUFkYXB0ZXIsIGFyZ3MpO1xyXG4gIH1cclxuXHJcbiAgZ2V0V2Vla1ZpZXcoYXJnczogR2V0V2Vla1ZpZXdBcmdzKTogV2Vla1ZpZXcge1xyXG4gICAgcmV0dXJuIGdldFdlZWtWaWV3KHRoaXMuZGF0ZUFkYXB0ZXIsIGFyZ3MpO1xyXG4gIH1cclxufVxyXG4iXX0=

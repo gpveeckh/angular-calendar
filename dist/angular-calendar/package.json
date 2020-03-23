@@ -5,41 +5,6 @@
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
   },
-  "scripts": {
-    "start": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve --open",
-    "build:copy-package-json": "copyfiles package.json projects/angular-calendar",
-    "build:lib": "ng build angular-calendar",
-    "build:date-adapters": "tsc -p tsconfig-date-adapters.json",
-    "build:styles": "node-sass projects/angular-calendar/src/angular-calendar.scss | postcss --output dist/angular-calendar/css/angular-calendar.css",
-    "build:clean": "del-cli dist",
-    "build:schematics": "tsc projects/angular-calendar/schematics/ng-add/index.ts",
-    "build:copyfiles": "copyfiles CHANGELOG.md README.md LICENSE dist/angular-calendar & cp-cli projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/date-fns/package.json & cp-cli projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/moment/package.json & copyfiles -u 3 projects/angular-calendar/src/**/*.scss dist/angular-calendar/scss & npx copyfiles -u 2 \"projects/angular-calendar/schematics/**/*.{json,js}\" dist/angular-calendar",
-    "build": "run-s build:copy-package-json build:lib build:date-adapters build:styles build:schematics build:copyfiles",
-    "test:single": "cross-env TZ=UTC ng test angular-calendar --watch=false --code-coverage",
-    "test:watch": "cross-env TZ=UTC ng test angular-calendar",
-    "test:schematics": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} TS_NODE_PREFER_TS_EXTS=true mocha --require ts-node/register projects/angular-calendar/schematics/**/*.spec.ts",
-    "test": "run-s lint test:single test:schematics build build:clean",
-    "lint:styles": "stylelint \"{projects,src}/**/*.scss\" --fix",
-    "lint:ts": "ng lint",
-    "lint": "run-s lint:ts lint:styles",
-    "commit": "git-cz",
-    "codecov": "cat coverage/lcov.info | codecov",
-    "prerelease": "npm test",
-    "pretest:schematics": "npm run build:copy-package-json",
-    "release:git-add": "git add package.json package-lock.json",
-    "release:git-commit": "git commit -m 'chore: bump version number'",
-    "release:git-changelog": "standard-version --first-release",
-    "release:git-push": "git push --follow-tags origin master",
-    "release:git": "run-s release:git-add release:git-commit release:git-changelog release:git-push",
-    "release:npm-publish": "npm publish dist/angular-calendar",
-    "release:npm": "run-s build release:npm-publish",
-    "release": "run-s release:git release:npm",
-    "postrelease": "npm run gh-pages",
-    "gh-pages:demos": "ng build --prod",
-    "gh-pages:compodoc": "compodoc -p tsconfig-compodoc.json -d dist/demos/docs --disableGraph --disableCoverage --disablePrivate --disableInternal --disableLifeCycleHooks --disableProtected --gaID UA-63367573-2",
-    "gh-pages:deploy": "ngh --dir=dist/demos --no-silent",
-    "gh-pages": "run-s build:clean gh-pages:demos gh-pages:compodoc gh-pages:deploy build:clean"
-  },
   "schematics": "./schematics/collection.json",
   "config": {
     "commitizen": {
@@ -159,7 +124,8 @@
     "angular-draggable-droppable": "^4.3.10",
     "angular-resizable-element": "^3.3.0",
     "calendar-utils": "^0.7.0",
-    "positioning": "^2.0.1"
+    "positioning": "^2.0.1",
+    "tslib": "^1.9.0"
   },
   "sideEffects": [
     "*.css",
@@ -170,5 +136,14 @@
       "commit-msg": "commitlint -e",
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "main": "bundles/angular-calendar.umd.js",
+  "module": "fesm5/angular-calendar.js",
+  "es2015": "fesm2015/angular-calendar.js",
+  "esm5": "esm5/angular-calendar.js",
+  "esm2015": "esm2015/angular-calendar.js",
+  "fesm5": "fesm5/angular-calendar.js",
+  "fesm2015": "fesm2015/angular-calendar.js",
+  "typings": "angular-calendar.d.ts",
+  "metadata": "angular-calendar.metadata.json"
 }
